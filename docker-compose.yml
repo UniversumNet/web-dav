@@ -1,20 +1,23 @@
 services:
-    nginxwebdav:
-        container_name: nginxwebdav
+    universum-webdav:
+        image: web-dav
+        container_name: bona
         build:
             context: .
         volumes:
-            - ./data:/data
+            - /srv/bona:/data
             - ./config:/config
-            # - ./custom-cont-init.d:/custom-cont-init.d # optional: additional cont-init.d-scripts like multi-user support
+            - ./custom-cont-init.d:/custom-cont-init.d
         environment:
-            - PUID=501
-            - PGID=20
-            - TZ=Europe/Berlin
-            - WEBDAV_USERNAME=user
-            - WEBDAV_PASSWORD=password
-            - SERVER_NAMES=localhost
+            - TZ=America/New_York
+            - SERVER_NAMES=localhost,apex.univerum.net
             - TIMEOUTS_S=1200 # these are seconds
-            - CLIENT_MAX_BODY_SIZE=120M # must end with M(egabytes) or G(igabytes)
+            - CLIENT_MAX_BODY_SIZE=10G # must end with M(egabytes) or G(igabytes)
         ports:
             - 32080:80
+        networks:
+            - nginx-proxy
+
+networks:
+    nginx-proxy:
+        driver: bridge

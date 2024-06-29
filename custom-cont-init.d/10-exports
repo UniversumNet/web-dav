@@ -1,0 +1,17 @@
+# Environment variables for web-dav
+
+# Variables
+export ENVIRONMENT=
+export BUILD_IMAGE=
+export BUILD_NEW_IMAGE=true
+export CREATE_CONTAINER=
+export CREATE_VOLUMES=
+export CREATE_NETWORK=
+
+# Example environment variables
+export DB_HOST=
+export DB_PORT=
+export DB_USER=
+export DB_PASSWORD=
+
+# Add more variables as needed
