@@ -3,3 +3,5 @@ data
 htpasswd
 litmus*
 config/nginx/htpasswd
+docker-compose.yml
+Dockerfile
